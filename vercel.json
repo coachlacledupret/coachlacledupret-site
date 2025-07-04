@@ -1,50 +1,12 @@
-
 {
-  "buildCommand": "cd app && npx next build",
-  "devCommand": "cd app && npx next dev",
-  "installCommand": "cd app && npm install",
-  "outputDirectory": "app/.next",
-  "framework": "nextjs",
-  "regions": ["cdg1"],
-  "functions": {
-    "app/app/api/**/*.{js,ts}": {
-      "runtime": "nodejs20.x",
-      "maxDuration": 10
-    }
-  },
-  "redirects": [
-    {
-      "source": "/sitemap.xml",
-      "destination": "/api/sitemap",
-      "permanent": false
-    }
-  ],
-  "headers": [
-    {
-      "source": "/guides/(.*)",
-      "headers": [
-        {
-          "key": "Cache-Control",
-          "value": "public, max-age=31536000, immutable"
-        }
-      ]
-    },
+  "version": 2,
+  "buildCommand": "npm run build",
+  "outputDirectory": "out",
+  "trailingSlash": false,
+  "rewrites": [
     {
       "source": "/(.*)",
-      "headers": [
-        {
-          "key": "X-Content-Type-Options",
-          "value": "nosniff"
-        },
-        {
-          "key": "X-Frame-Options",
-          "value": "DENY"
-        },
-        {
-          "key": "X-XSS-Protection",
-          "value": "1; mode=block"
-        }
-      ]
+      "destination": "/index.html"
     }
   ]
 }
